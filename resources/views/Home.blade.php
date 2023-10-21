@@ -1,5 +1,9 @@
 @extends('Layouts.App')
 
+@section('titulo')
+    Home
+@endsection
+
 @section('contenido')
     <h1 class="text-center py-20 uppercase text-5xl font-extrabold font-mono text-blue-900">estilo de vida sostenible <br> pero elegante</h1>
     <p class="text-center font-semibold text-xl">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum officia voluptas quis cupiditate non?<br> Vero odio voluptatem numquam autem  rerum dolorem atque et, modi facere fugit architecto, velit commodi. Quos?50</p>
