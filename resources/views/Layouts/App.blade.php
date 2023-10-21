@@ -26,5 +26,30 @@
     <main class="w-full h-full py-30">
         @yield('contenido')
     </main>
+    <footer class="w-full flex justify-center items-center flex-col border-y-2 bg-gray-200">
+        <div class="flex justify-center w-1/2 mt-10">
+            <div class="w-1/3 text-start">
+                <span class="font-bold text-2xl">Compania</span>
+                <p class="font-semibold mt-2">Sobre Nosotros</p>
+                <p class="font-semibold mt-2">Productos</p>
+                <p class="font-semibold mt-2">Direccion</p>
+            </div>
+            <div class="w-1/3 text-start">
+                <span class="font-bold text-2xl">Apoyo</span>
+                <p class="font-semibold mt-2">Preguntas frecuentes</p>
+                <p class="font-semibold mt-2">Envio y devolucion</p>
+                <p class="font-semibold mt-2">Garantia</p>
+            </div>
+            <div class="w-1/3 text-start">
+                <span class="font-bold text-2xl">Contactenos</span>
+                <p class="font-semibold mt-2"><i class="fa-solid fa-phone"></i> +51 916 236 760</p>
+                <p class="font-semibold mt-2"><i class="fa-solid fa-envelope"></i> Ecommerce@eco.com</p>
+                <p class="font-semibold mt-2">
+                    <i class="fa-brands fa-facebook"></i> <i class="fa-brands fa-instagram"></i> <i class="fa-brands fa-twitter"></i>
+                </p>
+            </div>
+        </div>
+        <p class="py-5 text-2xl text-gray-600">&copy;Ecommerce. Todos los derechos reservados {{ now()->year }}</p>
+    </footer>
 </body>
 </html>
