@@ -14,26 +14,35 @@
         <div class="-w-full flex justify-center py-20">
             <img src="{{asset('img/logo.png')}}" alt="Logo Ecommerce" class="w-80">
         </div>
-        <form action="" class="mt-10 m-auto" style="width: 60%;" novalidate>
+        <form action="{{ route('Registro') }}" method="POST" class="mt-10 m-auto" style="width: 60%;" novalidate>
             @csrf
             <div class="border border-blue-700 rounded-md mt-5 p-2 text-xl focus-within:ring-2 focus-within:ring-blue-500">
                 <span class="px-5">
                     <i class="fa-solid fa-user-tie"></i>
                 </span>
-                <input type="text" name="name" id="name" placeholder="Nombres" class="h-full outline-none">
+                <input type="text" name="name" id="name" placeholder="Nombres" class="h-full outline-none" value={{ old('name') }}>
             </div>
+            @error('name')
+                <p class="bg-red-500 text-white my-2 rounded-sm text-sm p-2 text-center">{{ $message }}</p>
+            @enderror
             <div class="border border-blue-700 rounded-md mt-5 p-2 text-xl focus-within:ring-2 focus-within:ring-blue-500">
                 <span class="px-5">
                     <i class="fa-solid fa-envelope"></i>
                 </span>
-                <input type="email" name="email" id="email" placeholder="Email" class="h-full outline-none">
+                <input type="email" name="email" id="email" placeholder="Email" class="h-full outline-none" value="{{ old('email') }}">
             </div>
+            @error('email')
+                <p class="bg-red-500 text-white my-2 rounded-sm text-sm p-2 text-center">{{ $message }}</p>
+            @enderror
             <div class="border border-blue-700 rounded-md mt-5 p-2 text-xl focus-within:ring-2 focus-within:ring-blue-500">
                 <span class="px-5">
                     <i class="fa-solid fa-unlock"></i>
                 </span>
                 <input type="password" name="password" id="password" placeholder="Contraseña" class="h-full outline-none">
             </div>
+            @error('password')
+                <p class="bg-red-500 text-white my-2 rounded-sm text-sm p-2 text-center">{{ $message }}</p>
+            @enderror
             <div class="border border-blue-700 rounded-md mt-5 p-2 text-xl focus-within:ring-2 focus-within:ring-blue-500">
                 <span class="px-5">
                     <i class="fa-solid fa-lock"></i>

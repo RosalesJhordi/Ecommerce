@@ -13,12 +13,14 @@ Route::get('/', function () {
 
 //motrar vistas - views
 
-Route::get('/Productos',[ProductosController::class,'index'])->name('Productos'); //vista productos
-Route::get('/Categorias',[CategoriasController::class,'index'])->name('Categorias'); //vista Categorias
-Route::get('/Orden',[OrdenController::class,'index'])->name('Orden'); //vista Ordenes
+Route::get('Productos',[ProductosController::class,'index'])->name('Productos'); //vista productos
+Route::get('Categorias',[CategoriasController::class,'index'])->name('Categorias'); //vista Categorias
+Route::get('Orden',[OrdenController::class,'index'])->name('Orden'); //vista Ordenes
 
 //Vista Registro - formulario
 
-Route::get('/Registro',[RegistroController::class,'index'])->name('Registro'); //Vista del formulario de registro
+Route::get('Registro',[RegistroController::class,'index'])->name('Registro'); //Vista del formulario de registro
+Route::post('Registro',[RegistroController::class,'store']);
 
 Route::get('Login',[LoginController::class,'index'])->name('Login');
+Route::post('Login',[LoginController::class,'store']);
