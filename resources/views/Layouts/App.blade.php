@@ -17,6 +17,9 @@
             <a href="{{route('Productos')}}" class="hover:text-black">Productos</a>
             <a href="{{route('Categorias')}}" class="hover:text-black">Categoria</a>
             <a href="{{route('Orden')}}" class="hover:text-black">Revisar orden</a>
+            @auth
+            <a href="" class="hover:text-black">Agregar Producto</a>
+            @endauth
         </nav>
         <div class="px-5 text-2xl">
             <i class="fa-solid fa-magnifying-glass hover:text-gray-500"></i>

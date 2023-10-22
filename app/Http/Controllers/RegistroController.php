@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -21,21 +20,16 @@ class RegistroController extends Controller
         ]);
 
         User::create([
-            'name'  => $request->name,
-            'email'=> $request->email,
-            'password'=> Hash::make($request->password),
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
         ]);
-        // User::create([
-        //     'name' => $request ->name,
-        //     'email' => $request ->email,
-        //     'password' => $request ->password
-        // ]);
-        // auth()->attempt([
-        //     'email'=> $request->email,
-        //     'password'=> Hash::make($request->password)
-        // ]);
 
-        dd('Creado');
-        // return redirect()->route('post.index', auth()->user()->name);
+        auth()->attempt([
+             'email'=> $request->email,
+             'password'=> Hash::make($request->password)
+        ]);
+
+        return view('Home');
     }
 }

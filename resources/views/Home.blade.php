@@ -7,6 +7,11 @@
 @section('contenido')
     <h1 class="text-center py-20 uppercase text-5xl font-extrabold font-mono text-blue-900">estilo de vida sostenible <br> pero elegante</h1>
     <p class="text-center font-semibold text-xl">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum officia voluptas quis cupiditate non?<br> Vero odio voluptatem numquam autem  rerum dolorem atque et, modi facere fugit architecto, velit commodi. Quos?50</p>
+    @if (auth()->user())
+    <h1 class="text-center font-semibold text-3xl p-2 mt-10 ">
+        Bienvenido {{auth()->user()->name}} Estos Productos te pueden Gustar
+    </h1>
+    @else
     <div class="w-full m-auto py-10 mt-20">
         <h1 class="text-center text-5xl text-blue-900 font-bold">Por qué elegirnos</h1>
         <div class="flex items-center m-auto justify-around py-20" style="width: 70%;">
@@ -59,21 +64,22 @@
         <div>
             <div style="width: 60%;" class="m-auto flex justify-center items-center flex-col">
                 <h1 class="text-center text-3xl text-blue-900 font-bold py-10 uppercase">Productos Populares resientes</h1>
-                <button class="p-5 w-52 text-white font-semibold hover:scale-105 bg-blue-700 px-5 rounded-full">Mas Productos <i class="fa-solid fa-arrow-right"></i></button>
+                <a href="{{route('Productos')}}" class="p-5 w-52 text-white font-semibold hover:scale-105 bg-blue-700 px-5 rounded-full">Mas Productos <i class="fa-solid fa-arrow-right"></i></a>
             </div>
             <div style="width: 60%;" class="m-auto flex justify-between items-center flex-col py-10">
                 <h1 class="text-center text-3xl text-blue-900 font-bold py-10 uppercase">Categoria</h1>
-                <button class="p-5 w-52 text-white font-semibold hover:scale-105 bg-blue-700 px-5 rounded-full">Mas Categorias <i class="fa-solid fa-arrow-right"></i></button>
+                <a href="{{route('Categorias')}}" class="p-5 w-52 text-white font-semibold hover:scale-105 bg-blue-700 px-5 rounded-full">Mas Categorias <i class="fa-solid fa-arrow-right"></i></a>
             </div>
             <div style="width: 60%;" class="m-auto py-10 text-center flex justify-center items-center flex-col bg-blue-700 rounded-lg">
                 <h1 class="text-white text-5xl font-extrabold">Unete a nuestra Comunidad</h1>
                 <h3 class="text-white py-5 font-semibold text-2xl">
                     Conozca al equipo de la empresa, coleccionista, anuncios, ofertas especiales y mas....
                 </h3>
-                <a href="" class="w-40 p-3  mt-10 rounded-full font-black text-xl hover:scale-105 uppercase bg-white">
+                <a href="{{route('Registro')}}" class="w-40 p-3  mt-10 rounded-full font-black text-xl hover:scale-105 uppercase bg-white">
                     Unirme
                 </a>
             </div>
         </div>
     </div>
+    @endif
 @endsection

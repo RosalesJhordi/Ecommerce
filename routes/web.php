@@ -9,7 +9,7 @@ use App\Http\Controllers\CategoriasController;
 
 Route::get('/', function () {
     return view('Home');
-});
+})->name('Home');
 
 //motrar vistas - views
 

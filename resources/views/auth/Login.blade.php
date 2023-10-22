@@ -37,6 +37,10 @@
             @error('password')
                 <p class="bg-red-500 text-white my-2 rounded-sm text-sm p-2 text-center">{{ $message }}</p>
             @enderror
+            <div class="p-2 mt-2 text-lg flex justify-start items-center">
+                <input type="checkbox" name="remember" id="remember" class="w-5 h-5 border-blue-500">
+                <span class="font-semibold px-2">Recordar Credenciales</span>
+            </div>
             <button type="submit" class="p-2 mt-10 rounded-md text-white font-semibold m-auto text-center w-full bg-blue-500">Login</button>
         </form>
         <p class="text-center mt-5 text-gray-500 text-xl">¿ No tienes una cuenta ? <a href="{{ route('Registro') }}" class="text-blue-500 font-semibold">Crea aqui</a></p>
