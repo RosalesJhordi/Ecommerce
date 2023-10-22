@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Ecommerce - @if(!empty(trim($__env->yieldContent('titulo')))) @yield('titulo') @else Home @endif</title>
+    <title>Ecommerce - @yield('titulo')</title>
     @vite('resources/css/app.css')
     <script src="https://kit.fontawesome.com/a22afade38.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body class="bg-white">
     <header class="shadow-md px-5 flex items-center justify-between">
@@ -18,12 +19,18 @@
             <a href="{{route('Categorias')}}" class="hover:text-black">Categoria</a>
             <a href="{{route('Orden')}}" class="hover:text-black">Revisar orden</a>
             @auth
-            <a href="" class="hover:text-black">Agregar Producto</a>
+            <a href="{{route('Agregar')}}" class="hover:text-black">Agregar Producto</a>
             @endauth
         </nav>
-        <div class="px-5 text-2xl">
-            <i class="fa-solid fa-magnifying-glass hover:text-gray-500"></i>
-            <a href="{{route('Registro')}}"><i class="fa-solid fa-right-to-bracket"></i></a>
+        <div class="px-5 text-2xl w-auto flex items-center">
+            @if (auth()->user())
+                <i class="fa-solid fa-magnifying-glass hover:text-gray-500"></i>
+                <i class="fa-solid fa-cart-shopping"></i>
+                <a href="{{route('Perfil',auth()->user()->name)}}"><img src="{{asset('img/usuario.svg')}}" alt="" class="w-10 h-10 rounded-full m-2 cursor-pointer"></a>
+            @else
+                <i class="fa-solid fa-magnifying-glass hover:text-gray-500"></i>
+                <a href="{{route('Registro')}}"><i class="fa-solid fa-right-to-bracket"></i></a>
+            @endif
         </div>
     </header>
     <main class="w-full h-full py-30">
