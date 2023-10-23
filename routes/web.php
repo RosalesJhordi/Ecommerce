@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OrdenController;
+use App\Http\Controllers\LogOutController;
 use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\RegistroController;
 use App\Http\Controllers\ProductosController;
@@ -19,6 +20,7 @@ Route::get('Categorias',[CategoriasController::class,'index'])->name('Categorias
 Route::get('Orden',[OrdenController::class,'index'])->name('Orden'); //vista Ordenes
 Route::get('Agregar',[ProductosController::class,'agregar'])->name('Agregar'); //vista agregar productos
 Route::get('{name}',[PerfilController::class,'index'])->name('Perfil');
+// Route::get('LogOut',[LogOutController::class,'index'])->name('LogOut');
 
 //Vista Registro - formulario
 

@@ -1,3 +1,4 @@
+{{-- @auth
 @extends('Layouts.App')
 
 @section('titulo')
@@ -20,9 +21,11 @@
             <h2 class="text-center m-auto w-1/2 py-2 text-2xl">
                 {{auth()->user()->email}}
             </h2>
-            <a href="" class="border w-1/3 rounded-md border-red-500 hover:bg-red-500 hover:text-white font-bold p-2 mt-10 text-center m-auto">Cerrar sesion</a>
+            <a href="{{route('LogOut')}}" class="border w-1/3 rounded-md border-red-500 hover:bg-red-500 hover:text-white font-bold p-2 mt-10 text-center m-auto">Cerrar sesion</a>
         </div>
     </div>
 </div>
 <script src="resources/js/image.js"></script>
 @endsection
+    
+@endauth --}}

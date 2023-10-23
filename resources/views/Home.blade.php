@@ -47,7 +47,7 @@
                         <i class="fa-solid fa-cart-shopping text-xl"></i>
                     </a>
                 </h2>
-                <img src="http://127.0.0.1:8000/client/img/watch.png" alt="" class="p-1 bg-white rounded-md">
+                <img src="{{asset('img/watch.png')}}" alt="" class="p-1 bg-white rounded-md">
             </div>
             <div class="w-1/2 h-52 bg-sky-400 m-5 rounded-md justify-around items-center flex">
                 <h2 class="flex flex-col">
@@ -58,7 +58,7 @@
                         <i class="fa-solid fa-cart-shopping text-xl"></i>
                     </a>
                 </h2>
-                <img src="http://127.0.0.1:8000/client/img/belt.png" alt="" class="p-1 bg-white rounded-md">
+                <img src="{{asset('img/belt.png')}}" alt="" class="p-1 bg-white rounded-md">
             </div>
         </div>
         <div>
