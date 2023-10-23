@@ -5,3 +5,8 @@
 ::-webkit-scrollbar{
     width: 0px;
 }
+
+#Informacion{
+    transform: translateX(500px);
+    transition: transform 0.5s ease-in-out;
+}

@@ -19,8 +19,7 @@ Route::get('Productos',[ProductosController::class,'index'])->name('Productos');
 Route::get('Categorias',[CategoriasController::class,'index'])->name('Categorias'); //vista Categorias
 Route::get('Orden',[OrdenController::class,'index'])->name('Orden'); //vista Ordenes
 Route::get('Agregar',[ProductosController::class,'agregar'])->name('Agregar'); //vista agregar productos
-Route::get('{name}',[PerfilController::class,'index'])->name('Perfil');
-// Route::get('LogOut',[LogOutController::class,'index'])->name('LogOut');
+Route::get('LogOut',[LogOutController::class,'index'])->name('LogOut');
 
 //Vista Registro - formulario
 
@@ -29,3 +28,5 @@ Route::post('Registro',[RegistroController::class,'store']);
 
 Route::get('Login',[LoginController::class,'index'])->name('Login');
 Route::post('Login',[LoginController::class,'store']);
+
+Route::post('Info',[RegistroController::class,'informacion'])->name('Informacion');

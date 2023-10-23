@@ -26,7 +26,7 @@
             @if (auth()->user())
                 <i class="fa-solid fa-magnifying-glass hover:text-gray-500"></i>
                 <i class="fa-solid fa-cart-shopping"></i>
-                <a href="{{route('Perfil',auth()->user()->name)}}"><img src="{{asset('img/usuario.svg')}}" alt="" class="w-10 h-10 rounded-full m-2 cursor-pointer"></a>
+                <button id="info"><img src="{{asset('img/usuario.svg')}}" alt="" class="w-10 h-10 rounded-full m-2 cursor-pointer"></button>
             @else
                 <i class="fa-solid fa-magnifying-glass hover:text-gray-500"></i>
                 <a href="{{route('Registro')}}"><i class="fa-solid fa-right-to-bracket"></i></a>
@@ -35,6 +35,22 @@
     </header>
     <main class="w-full h-full py-30">
         @yield('contenido')
+        @auth
+        <div class="w-1/4 absolute bg-gray-100 shadow-2xl top-0 right-0" style="height: 100vh" id="Informacion">
+            <span class="bg-red-500 flex justify-center items-center w-10 h-10 p-2 cursor-pointer">
+                <i class="fa-solid fa-x p-2 text-white font-bold text-2xl" id="close"></i>
+            </span>
+            <div class="w-full flex justify-center">
+                <img src="{{asset('img/usuario.svg')}}" alt="" class="w-80 h-80 rounded-full m-2 cursor-pointer">
+            </div>
+            <div class="w-full flex flex-col  justify-center mt-5">
+                <button class="border w-1/2  rounded-md bg-white border-blue-500 hover:bg-blue-500 hover:text-white font-bold p-2 m-auto" id="editar-imagen">Editar Foto</button>
+                <h1 class="text-2xl font-semibold w-1/2 m-auto py-1 mt-5">{{auth()->user()->name}}</h1>
+                <h1 class="text-2xl font-semibold w-1/2 m-auto py-1">{{auth()->user()->email}}</h1>
+                <a href="{{route('LogOut')}}" class="bg-red-500 w-1/2 m-auto text-center p-2 mt-10 rounded-lg text-white">Cerrar sesion</a>
+            </div>
+        </div>
+        @endauth
     </main>
     <footer class="w-full flex justify-center items-center flex-col border-y-2 bg-gray-200">
         <div class="flex justify-center w-1/2 mt-10">
@@ -61,5 +77,6 @@
         </div>
         <p class="py-5 text-2xl text-gray-600">&copy;Ecommerce. Todos los derechos reservados {{ now()->year }}</p>
     </footer>
+    <script src="{{asset('js/perfil.js')}}"></script>
 </body>
 </html>

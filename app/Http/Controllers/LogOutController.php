@@ -7,8 +7,8 @@ use Illuminate\Support\Facades\Auth;
 
 class LogOutController extends Controller
 {
-    // public function index(){
-    //     Auth::logout(); // Cierra la sesión del usuario
-    //     return redirect()->route('Home');
-    // }
+    public function index(){
+        Auth::logout();
+        return redirect()->route('Home');
+    }
 }
