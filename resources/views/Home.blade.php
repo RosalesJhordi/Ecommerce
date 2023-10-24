@@ -11,6 +11,18 @@
     <h1 class="text-center font-semibold text-3xl p-2 mt-10 ">
         Bienvenido {{auth()->user()->name}} Estos Productos te pueden Gustar
     </h1>
+    <div class="px-52 flex justify-between flex-wrap p-2">
+        @foreach ($productos as $producto)
+        <div class="shadow-md shadow-black rounded-lg p-2 flex justify-between h-1/3" style="width: 30%;">
+            <div class="flex flex-col  justify-start px-5  items-start w-96">
+                <span class="text-2xl font-bold">{{$producto->nombre}}</span>
+                <span class="text-xl font-semibold w-full">{{$producto->categoria}}</span>
+                <span class="font-mono text-blue-900 uppercase font-extrabold py-5">{{ $producto->created_at->diffForHumans() }}</span>
+            </div>
+            <img src="{{asset('ServidorProductos') . '/' . $producto->imagen}}" alt="Imagen Producto {{$producto->nombre}}" class="w-44">
+        </div>
+        @endforeach
+    </div>
     @else
     <div class="w-full m-auto py-10 mt-20">
         <h1 class="text-center text-5xl text-blue-900 font-bold">Por qué elegirnos</h1>

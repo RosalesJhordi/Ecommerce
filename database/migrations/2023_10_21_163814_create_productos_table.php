@@ -21,6 +21,7 @@ return new class extends Migration
             $table->double('precio');
             $table->double('descuento')->nullable();
             $table->string('imagen');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

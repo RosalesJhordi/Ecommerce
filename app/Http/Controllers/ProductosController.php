@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Productos;
 use Illuminate\Http\Request;
 
 class ProductosController extends Controller
@@ -10,6 +11,29 @@ class ProductosController extends Controller
         return view("secciones.Productos");
     }
     public function agregar(){
-        return view("secciones.Agregar");
+        $productos = Productos::where('user_id', auth()->user()->id)->paginate(6);
+        return view("secciones.Agregar",compact('productos'));
+    }
+    public function store(Request $request){
+        $this->validate($request,[
+            "nombre"        => 'required',
+            "categoria"     => 'required',
+            "descripcion"   => "required",
+            "precio"        => "required",
+            "descuento"     => "required",
+            "imagen"        => "required"
+        ]);
+
+        Productos::create([
+            "nombre"        => $request ->nombre,
+            "categoria"     => $request ->categoria,
+            "descripcion"   => $request ->descripcion,
+            "precio"        => $request ->precio,
+            "descuento"     => $request ->descuento,
+            "imagen"        => $request ->imagen,
+            'user_id'       => auth()->user()->id
+        ]);
+        $productos = Productos::where('user_id', auth()->user()->id)->paginate(6);
+        return redirect()->route('Agregar',compact('productos'));
     }
 }

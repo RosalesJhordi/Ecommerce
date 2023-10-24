@@ -7,6 +7,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Ecommerce - @yield('titulo')</title>
     @vite('resources/css/app.css')
+    @vite('resources/js/app.js')
+    <script src="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone-min.js"></script>
+    <link href="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone.css" rel="stylesheet" type="text/css" />
     <script src="https://kit.fontawesome.com/a22afade38.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
@@ -26,7 +29,7 @@
             @if (auth()->user())
                 <i class="fa-solid fa-magnifying-glass hover:text-gray-500"></i>
                 <i class="fa-solid fa-cart-shopping"></i>
-                <button id="info"><img src="{{asset('img/usuario.svg')}}" alt="" class="w-10 h-10 rounded-full m-2 cursor-pointer"></button>
+                <button id="info"><img src="{{asset('img/usuario.svg')}}" alt="" class="w-10 h-10 rounded-full m-2 cursor-pointer" id="info"></button>
             @else
                 <i class="fa-solid fa-magnifying-glass hover:text-gray-500"></i>
                 <a href="{{route('Registro')}}"><i class="fa-solid fa-right-to-bracket"></i></a>
@@ -36,7 +39,7 @@
     <main class="w-full h-full py-30">
         @yield('contenido')
         @auth
-        <div class="w-1/4 absolute bg-gray-100 shadow-2xl top-0 right-0" style="height: 100vh" id="Informacion">
+        <div class="w-1/4 bg-gray-100 shadow-2xl top-0 right-0 fixed" style="height: 100vh" id="Informacion">
             <span class="bg-red-500 flex justify-center items-center w-10 h-10 p-2 cursor-pointer">
                 <i class="fa-solid fa-x p-2 text-white font-bold text-2xl" id="close"></i>
             </span>

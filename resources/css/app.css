@@ -10,3 +10,9 @@
     transform: translateX(500px);
     transition: transform 0.5s ease-in-out;
 }
+.formulario{
+    left: 20%;
+    top: 20%;
+    transform: translateY(-1000px);
+    transition: transform 0.5s ease-in-out;
+}

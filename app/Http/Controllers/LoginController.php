@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Productos;
 use Illuminate\Http\Request;
 
 class LoginController extends Controller
@@ -19,6 +20,7 @@ class LoginController extends Controller
         if(!auth()->attempt($request->only('email','password'), $request->remember)){
             return back()->with('mensaje','Credenciales Incorrectas');
         }
-        return view('Home');
+        $productos = Productos::all();
+        return view('Home',compact('productos'));
     }
 }

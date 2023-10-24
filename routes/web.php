@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OrdenController;
+use App\Http\Controllers\ImagenController;
 use App\Http\Controllers\LogOutController;
-use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\RegistroController;
 use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\CategoriasController;
@@ -30,3 +30,5 @@ Route::get('Login',[LoginController::class,'index'])->name('Login');
 Route::post('Login',[LoginController::class,'store']);
 
 Route::post('Info',[RegistroController::class,'informacion'])->name('Informacion');
+Route::post('Imagen',[ImagenController::class,'store'])->name('Imagen');
+Route::post('AgregarProducto',[ProductosController::class,'store'])->name('AgregarProducto');
