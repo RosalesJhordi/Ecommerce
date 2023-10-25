@@ -16,3 +16,25 @@
     transform: translateY(-1000px);
     transition: transform 0.5s ease-in-out;
 }
+.contenedor-form{
+    height: 100vh; 
+    width: 40%;
+}
+.contenedor-img{
+    height: 100vh;
+    width: 60%;
+}
+.form{
+    width: 60%;
+}
+@media (max-width: 450px) {
+    .contenedor-img{
+        width: 0px;
+    }
+    .contenedor-form{
+        width: 100%;
+    }
+    .form{
+        width: 80%;
+    }
+}

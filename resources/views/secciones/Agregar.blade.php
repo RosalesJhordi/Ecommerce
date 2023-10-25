@@ -9,12 +9,12 @@
   <i class="fa-solid fa-x p-2 text-red font-bold text-2xl w-full flex justify-end text-end cancelar"></i>
   <div class="w-full h-auto flex justify-between mt-2" style="height: 50vh;">
     <div class="w-1/2 mx-5 h-96 m-auto rounded-lg border border-black">
-      <form action="{{ route('Imagen') }}" method="POST" enctype="multipart/form-data" id="dropzone" class="dropzone h-full flex flex-col justify-center items-center">
+      <form action="{{ route('Imagen') }}" method="POST" enctype="multipart/form-data" id="dropzone" class="dropzone font-extralight text-gray-700 text-3xl h-full flex flex-col justify-center items-center">
         @csrf
       </form>
     </div>
     <div class="w-1/2 h-full flex items-center justify-center">
-      <form action="{{ route('AgregarProducto') }}" method="POST" class="flex justify-center flex-col items-center">
+      <form action="{{ route('AgregarProducto') }}" method="POST" class="flex justify-center flex-col items-center" style="width: 100%;">
         @csrf
         <div class="border border-blue-700 rounded-md w-96 mt-5 p-2 text-xl focus-within:ring-2 focus-within:ring-blue-500">
             <span class="px-5">
@@ -31,14 +31,14 @@
             </span>
             <select id="categoria" name="categoria" class="w-auto p-2 cursor-pointer" value={{ old('categoria') }}>
                 <option disabled selected class="text-gray-400">Selecciona una Categoria</option>
-                <option value="servicios digitales">Servicios digitales</option>
-                <option value="cosmética y cuidado corporal">Cosmética y cuidado corporal</option>
-                <option value="alimentos y bebidas">Alimentos y bebidas</option>
-                <option value="muebles y decoración">Muebles y decoración</option>
-                <option value="salud y bienestar">Salud y bienestar</option>
-                <option value="artículos para el hogar">Artículos para el hogar</option>
-                <option value="cuidado de mascotas">Cuidado de mascotas</option>
-                <option value="articulos de oficina">Articulos de oficina</option>
+                <option value="Ropa y Accesorios">Ropa y Accesorios</option>
+                <option value="Electrónica">Electrónica</option>
+                <option value="Hogar y Jardín">Hogar y Jardín</option>
+                <option value="Salud y Belleza">Salud y Belleza</option>
+                <option value="Alimentos y Bebidas">Alimentos y Bebidas</option>
+                <option value="Deportes y Aire Libre">Deportes y Aire Libre</option>
+                <option value="Electrodomésticos">Electrodomésticos</option>
+                <option value="Juguetes y Entretenimiento">Juguetes y Entretenimiento</option>
             </select>
         </div>
         @error('categoria')
@@ -108,8 +108,9 @@
         {{ $productos->links() }}
     </div>
 @else
-    <div class="flex justify-center items-center px-52" style="height: 60vh;">
-        <h1 class="text-3xl font-bold text-gray-500 uppercase">Aun no hay Productos añadidos, Los productos que añadidos se mostraran aqui</h1>
+    <div class="flex justify-center flex-col items-center px-52 " style="height: 60vh;">
+        <img src="{{asset('img/cerdito.png')}}" alt="cerditoXD" style="width: 20%;">
+        <h1 class="text-2xl mt-5 font-bold text-gray-500 uppercase">Aun no hay Productos añadidos, Los productos que añadidos se mostraran aqui</h1>
     </div>
 @endif
 <script src="{{asset('js/agregar.js')}}"></script>

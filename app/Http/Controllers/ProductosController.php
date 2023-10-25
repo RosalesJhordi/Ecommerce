@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 class ProductosController extends Controller
 {
     public function index(){
-        return view("secciones.Productos");
+        $productos = Productos::all();
+        return view("secciones.Productos",compact('productos'));
     }
     public function agregar(){
         $productos = Productos::where('user_id', auth()->user()->id)->paginate(6);

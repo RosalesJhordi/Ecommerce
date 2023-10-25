@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Productos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -24,12 +25,19 @@ class RegistroController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+        
+        if(!auth()->attempt($request->only('email','password'), $request->remember)){
+            return back()->with('mensaje','Credenciales Incorrectas');
+        }
+        $productos = Productos::all();
+        return view('Home', ['productos' => $productos,auth()->user()]);
 
-        auth()->attempt([
-             'email'=> $request->email,
-             'password'=> Hash::make($request->password)
+    }
+    public function perfil(Request $request){
+        User::create([
+            'imagen' => $request->imagen
         ]);
-
-        return view('Home');
+        $productos = Productos::all();
+        return view('Home', ['productos' => $productos,auth()->user()]);
     }
 }

@@ -7,7 +7,12 @@ export default {
     "./vendor/laravel/framework/src/Illuminate/Pagination/resources/views/Agregar.blade.php"
   ],
   theme: {
-    extend: {},
+    screens: {
+      sm: '450px',
+      md: '768px',
+      lg: '976px',
+      xl: '1440px'
+    }
   },
   plugins: [],
 }

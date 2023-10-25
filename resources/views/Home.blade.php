@@ -5,25 +5,28 @@
 @endsection
 
 @section('contenido')
-    <h1 class="text-center py-20 uppercase text-5xl font-extrabold font-mono text-blue-900">estilo de vida sostenible <br> pero elegante</h1>
-    <p class="text-center font-semibold text-xl">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum officia voluptas quis cupiditate non?<br> Vero odio voluptatem numquam autem  rerum dolorem atque et, modi facere fugit architecto, velit commodi. Quos?50</p>
+    <h1 class="text-center py-10 uppercase text-5xl font-extrabold font-mono text-blue-900">estilo de vida sostenible <br> pero elegante</h1>
     @if (auth()->user())
-    <h1 class="text-center font-semibold text-3xl p-2 mt-10 ">
+    <h1 class="text-start px-20 uppercase font-semibold text-2xl text-blue-800 p-2 ">
         Bienvenido {{auth()->user()->name}} Estos Productos te pueden Gustar
     </h1>
-    <div class="px-52 flex justify-between flex-wrap p-2">
+    <div class="px-20 flex justify-between flex-wrap p-2 py-10">
         @foreach ($productos as $producto)
-        <div class="shadow-md shadow-black rounded-lg p-2 flex justify-between h-1/3" style="width: 30%;">
-            <div class="flex flex-col  justify-start px-5  items-start w-96">
-                <span class="text-2xl font-bold">{{$producto->nombre}}</span>
-                <span class="text-xl font-semibold w-full">{{$producto->categoria}}</span>
-                <span class="font-mono text-blue-900 uppercase font-extrabold py-5">{{ $producto->created_at->diffForHumans() }}</span>
+            <div class="border flex justify-between shadow-md hover:border-gray-400 hover:scale-105 mt-5" style="width: 23%; height: 23vh;">
+                <div class="w-1/2 flex flex-col m-1">
+                    <span class="text-2xl font-bold">{{ $producto->nombre }}</span>
+                    <span class="text-xl font-semibold w-full">{{ $producto->categoria }}</span>
+                    <span class="font-mono text-blue-900 uppercase font-extrabold py-1">{{ $producto->created_at->diffForHumans() }}</span>
+                    {{ $producto->user->name }}
+                </div>
+                <div class="w-1/2">
+                    <img src="{{ asset('ServidorProductos') . '/' . $producto->imagen }}" alt="Imagen Producto {{ $producto->nombre }}" class="w-full">
+                </div>
             </div>
-            <img src="{{asset('ServidorProductos') . '/' . $producto->imagen}}" alt="Imagen Producto {{$producto->nombre}}" class="w-44">
-        </div>
         @endforeach
     </div>
     @else
+    <p class="text-center font-semibold text-xl">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum officia voluptas quis cupiditate non?<br> Vero odio voluptatem numquam autem  rerum dolorem atque et, modi facere fugit architecto, velit commodi. Quos?50</p>
     <div class="w-full m-auto py-10 mt-20">
         <h1 class="text-center text-5xl text-blue-900 font-bold">Por qué elegirnos</h1>
         <div class="flex items-center m-auto justify-around py-20" style="width: 70%;">
