@@ -9,7 +9,14 @@ class ProductosController extends Controller
 {
     public function index(){
         $productos = Productos::all();
-        return view("secciones.Productos",compact('productos'));
+        $categorias = Productos::distinct('categoria')->pluck('categoria');
+        return view("secciones.Productos",compact("productos","categorias"));
+    }
+    public function filtrar(Request $request){
+        $categoria = $request->categoria;
+        $productos = Productos::where('categoria', $categoria)->get();
+        $categorias = Productos::distinct('categoria')->pluck('categoria');
+        return view("secciones.Productos",compact("productos","categorias"));
     }
     public function agregar(){
         $productos = Productos::where('user_id', auth()->user()->id)->paginate(6);

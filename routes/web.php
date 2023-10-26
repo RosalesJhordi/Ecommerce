@@ -8,11 +8,11 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OrdenController;
 use App\Http\Controllers\ImagenController;
 use App\Http\Controllers\LogOutController;
-use App\Http\Controllers\PerfilController;
+use App\Http\Controllers\PedidosController;
 use App\Http\Controllers\RegistroController;
 use App\Http\Controllers\ProductosController;
-use App\Http\Controllers\CategoriasController;
 use App\Http\Controllers\RecomendadoController;
+use App\Models\Pedido;
 
 Route::get('/', function () {
     $productos = Productos::all();
@@ -26,18 +26,17 @@ Route::get('/', function () {
             $users[] = $user;
         }
     }
-    $titulo = 'Home';
-    return view('Home',compact('productos','users','titulo'));
+    return view('Home',compact('productos','users'));
 })->name('Home');
 
 //motrar vistas - views
 
 Route::get('Productos',[ProductosController::class,'index'])->name('Productos'); //vista productos
-Route::get('Categorias',[CategoriasController::class,'index'])->name('Categorias'); //vista Categorias
 Route::get('Orden',[OrdenController::class,'index'])->name('Orden'); //vista Ordenes
 Route::get('Agregar',[ProductosController::class,'agregar'])->name('Agregar'); //vista agregar productos
 Route::get('LogOut',[LogOutController::class,'index'])->name('LogOut');
 Route::get('Recomendado',[RecomendadoController::class,'index'])->name('Recomendado');
+Route::get('Pedido/{id}',[PedidosController::class,'index'])->name('Pedido');
 
 //Vista Registro - formulario
 
@@ -50,5 +49,6 @@ Route::post('Login',[LoginController::class,'store']);
 Route::post('Info',[RegistroController::class,'informacion'])->name('Informacion');
 Route::post('Imagen',[ImagenController::class,'store'])->name('Imagen');
 Route::post('AgregarProducto',[ProductosController::class,'store'])->name('AgregarProducto');
-Route::post('Categoria',[CategoriasController::class,'filtrar'])->name('Filtrar');
+Route::post('Categoria',[ProductosController::class,'filtrar'])->name('Filtrar');
 Route::post('/producto/{producto}/likes',[LikeController::class,'store'])->name('likes.store');
+Route::post('Pedido',[PedidosController::class,'store'])->name('Pedido.store');

@@ -13,7 +13,8 @@ class Pedido extends Model
         'telefono',
         'direccion',
         'user_id',
-        'productos_id'
+        'productos_id',
+        'codigo'
     ];
     public function user()
     {

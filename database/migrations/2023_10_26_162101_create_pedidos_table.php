@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('direccion');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('productos_id')->references('id')->on('productos')->onDelete('cascade');
+            $table->string('codigo');
             $table->timestamps();
         });
     }

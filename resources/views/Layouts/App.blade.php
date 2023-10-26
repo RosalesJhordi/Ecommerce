@@ -20,7 +20,6 @@
         <nav class="w-1/2 uppercase flex justify-around items-center font-semibold text-gray-400">
             <a href="/" class="hover:text-black">Inicio</a>
             <a href="{{route('Productos')}}" class="hover:text-black">Productos</a>
-            <a href="{{route('Categorias')}}" class="hover:text-black">Categoria</a>
             <a href="{{route('Orden')}}" class="hover:text-black">Revisar orden</a>
             <a href="{{route('Recomendado')}}" class="hover:text-black">Recomendado</a>
             @auth
@@ -30,10 +29,18 @@
         <div class="px-5 text-2xl w-auto flex items-center">
             @if (auth()->user())
                 <i class="fa-solid fa-magnifying-glass hover:text-gray-500"></i>
-                <div class="relative">
-                    <span class="absolute text-xs w-3 h-3 right-0 text-white flex justify-center items-center p-1 rounded-full bg-red-600" style="top: -5%"></span>
-                    <i class="fa-solid fa-cart-shopping px-1"></i>
-                </div>
+                    <div class="relative">
+                        @if (auth()->user()->pedidos->isNotEmpty())
+                            <span class="absolute text-xs w-3 h-3 right-0 text-white flex justify-center items-center p-1 rounded-full bg-red-600" style="top: -5%"></span>
+                        @endif
+                        <i class="fa-solid fa-cart-shopping px-1"></i>
+                    </div>
+                    <div class="relative">
+                        @if (auth()->user()->pedidos->isNotEmpty())
+                            <span class="absolute text-xs w-3 h-3 right-0 text-white flex justify-center items-center p-1 rounded-full bg-sky-500" style="top: -5%"></span>
+                        @endif
+                        <i class="fa-solid fa-bell"></i>
+                    </div>
                 <button id="info"><img src="{{asset('img/usuario.svg')}}" alt="" class="w-10 h-10 rounded-full m-2 cursor-pointer" id="info"></button>
             @else
                 <i class="fa-solid fa-magnifying-glass hover:text-gray-500"></i>

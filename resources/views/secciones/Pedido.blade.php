@@ -7,22 +7,32 @@
 @section('contenido')
 <div class="px-52 justify-center items-center flex flex-col py-10">
     <h1 class="px-10 py-10 uppercase text-2xl font-extrabold font-mono text-blue-900">Realizar Pedido</h1>
-    <div class="flex justify-center p-2 border" style="width: 50%; height: 50vh;">
+    @if(session('success'))
+        <p class="bg-green-500 text-white my-2 rounded-sm text-md p-2 text-center" style="width: 50%;">{{ session('success') }}</p>
+    @endif
+    <div class="flex justify-center p-2 border shadow-xl shadow-gray-300" style="width: 50%; height: 50vh;">
         @if(isset($productos))
-            <div class="w-1/2 h-full flex justify-center items-center">
+            <div class="w-1/2 h-full flex justify-center items-center bg-blue-200">
                 <img src="{{ asset('ServidorProductos') . '/' . $productos->imagen }}" alt="" class="h-1/2">
             </div>
             <div class="w-1/2 py-2">
-                <h1>Nombre: {{ $productos->nombre }}</h1>
-                <h1>Descripcion: {{ $productos->descripcion }}</h1>
-                <h2>Precio:{{ $productos->precio }}</h2>
-                <h2>Descuento: {{ $productos->descuento }} </h2>
-                <h2>Total: {{ $productos->precio - $productos->descuento }}</h2>
-                <form action="{{ route('Pedidos.store')}}" method="POST">
+                <h1 class="text-2xl font-semibold flex justify-between px-5">Nombre: <span class="font-light">{{ $productos->nombre }}</span></h1>
+                <h1 class="text-2xl font-semibold flex justify-between px-5"">Descripcion: <span class="font-light">{{ $productos->descripcion }}</span></h1>
+                <h2 class="text-2xl font-semibold flex justify-between px-5"">Precio: <span class="font-light">{{ $productos->precio }}</span></h2>
+                <h2 class="text-2xl font-semibold flex justify-between px-5"">Descuento: <span class="font-light">{{ $productos->descuento }}</span> </h2>
+                <h2 class="text-2xl font-semibold flex justify-between px-5"">Total: <span class="font-light">{{ $productos->precio - $productos->precio * ($productos->descuento / 100) }}</span></h2>
+                <form action="{{ route('Pedido.store') }}" method="POST" class="flex flex-col items-center mt-10 px-5">
+                    @csrf
                     <input type="hidden" name="id_producto" value="{{ $productos->id }}">
-                    <input type="text" name="telefono" id="telefono" placeholder="Telefono">
-                    <input type="text" name="direccion" id="direccion" placeholder="Direccion">
-                    <input type="submit" value="Realizar Pedido">
+                    <input type="text" name="telefono" id="telefono" placeholder="Telefono" class="w-full p-2 border rounded-sm">
+                    @error('telefono')
+                        <p class="bg-red-500 text-white my-2 rounded-sm text-sm p-2 text-center">{{ $message }}</p>
+                    @enderror
+                    <input type="text" name="direccion" id="direccion" placeholder="Direccion" class="w-full p-2 mt-5 border rounded-sm">
+                    @error('direccion')
+                        <p class="bg-red-500 text-white my-2 rounded-sm text-sm p-2 text-center">{{ $message }}</p>
+                    @enderror
+                    <input type="submit" value="Realizar Pedido" class="bg-blue-500 p-2 w-1/2 rounded-sm text-white mt-5">
                 </form>
             </div>
         @else

@@ -5,7 +5,17 @@
 @endsection
 
 @section('contenido')
-<h1 class=" px-52 uppercase mt-10 text-2xl font-extrabold font-mono text-blue-900">Productos Resientes</h1>
+<h1 class="px-52 text-sm font-semibold w-full mt-5 uppercase">Categorias</h1>
+<div class="flex justify-start px-52 items-center py-1">
+    @foreach ($categorias as $categoria)
+        <form action="{{ route('Filtrar') }}" method="POST" class="text-md p-2 font-bold hover:text-blue-700 cursor-pointer">
+            @csrf
+            <input type="hidden" name="categoria" value="{{ $categoria }}">
+            <button type="submit" class="uppercase">{{ $categoria }}</button>
+        </form>
+    @endforeach
+</div>
+<h1 class=" px-52 uppercase text-2xl font-extrabold font-mono text-blue-900">Productos Resientes</h1>
 <div class="flex justify-start flex-wrap p-2 w-full px-52">
     @foreach ($productos as $producto)
             <div class="border border-gray-300 m-5" style="height: 40vh; width: 20%;">
@@ -27,18 +37,31 @@
                         <span class="absolute right-0 p-2 text-lg font-semibold">S/. {{ $producto->precio }}</span>
                         <form action="{{route('likes.store',$producto)}}" method="POST" class="flex justify-start mt-5 items-center">
                             @csrf
+                            @if (auth()->check())
                             <button type="submit" class="ml-2">
                                 @if ($producto->likedBy->contains(auth()->user()))
                                     <i class="fa-solid fa-heart text-red-600"></i>
                                 @else
                                     <i class="fa-solid fa-heart text-gray-300"></i>
                                 @endif
-                            </button> 
+                            </button>
+                            @else
+                                <a href="{{ route('Registro') }}" class="ml-2">
+                                    <i class="fa-solid fa-heart text-gray-300"></i>
+                                </a>
+                            @endif
                             <p class="text-sm px-2 font-semibold"> {{ $producto->likes->count() }} Me gusta</p>             
                         </form>
-                        <a href="" class="text-2xl text-gray-800 absolute right-0 bottom-0 p-2">
-                            <i class="fa-solid fa-truck-fast"></i>
-                        </a>  
+                        @if (auth()->check())
+                            <a href="{{route('Pedido',$producto->id)}}" class="text-2xl text-gray-800 absolute right-0 bottom-0 p-2">
+                                <i class="fa-solid fa-truck-fast"></i>
+                            </a> 
+                        @else
+                            <a href="{{ route('Registro') }}" class="text-2xl text-gray-800 absolute right-0 bottom-0 p-2">
+                                <i class="fa-solid fa-truck-fast"></i>
+                            </a> 
+                        @endif
+ 
                     </div>
                 </div>
             </div>

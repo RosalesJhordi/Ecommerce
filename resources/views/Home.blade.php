@@ -31,18 +31,30 @@
                         <span class="absolute right-0 p-2 text-lg font-semibold">S/. {{ $producto->precio }}</span>
                         <form action="{{route('likes.store',$producto)}}" method="POST" class="flex justify-start mt-5 items-center">
                             @csrf
+                            @if (auth()->check())
                             <button type="submit" class="ml-2">
                                 @if ($producto->likedBy->contains(auth()->user()))
                                     <i class="fa-solid fa-heart text-red-600"></i>
                                 @else
                                     <i class="fa-solid fa-heart text-gray-300"></i>
                                 @endif
-                            </button> 
+                            </button>
+                            @else
+                                <a href="{{ route('Registro') }}" class="ml-2">
+                                    <i class="fa-solid fa-heart text-gray-300"></i>
+                                </a>
+                            @endif
                             <p class="text-sm px-2 font-semibold"> {{ $producto->likes->count() }} Me gusta</p>             
                         </form>
-                        <a href="" class="text-2xl text-gray-800 hover:bg-orange-500 rounded-full hover:text-white absolute right-0 bottom-0 p-2">
-                            <i class="fa-solid fa-truck-fast"></i>
-                        </a>  
+                        @if (auth()->check())
+                            <a href="{{route('Pedido',$producto->id)}}" class="text-2xl text-gray-800 absolute right-0 bottom-0 p-2">
+                                <i class="fa-solid fa-truck-fast"></i>
+                            </a> 
+                        @else
+                            <a href="{{ route('Registro') }}" class="text-2xl text-gray-800 absolute right-0 bottom-0 p-2">
+                                <i class="fa-solid fa-truck-fast"></i>
+                            </a> 
+                        @endif 
                     </div>
                 </div>
             </div>
@@ -107,7 +119,7 @@
             </div>
             <div style="width: 60%;" class="m-auto flex justify-between items-center flex-col py-10">
                 <h1 class="text-center text-3xl text-blue-900 font-bold py-10 uppercase">Categoria</h1>
-                <a href="{{route('Categorias')}}" class="p-5 w-52 text-white font-semibold hover:scale-105 bg-blue-700 px-5 rounded-full">Mas Categorias <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="" class="p-5 w-52 text-white font-semibold hover:scale-105 bg-blue-700 px-5 rounded-full">Mas Categorias <i class="fa-solid fa-arrow-right"></i></a>
             </div>
             <div style="width: 60%;" class="m-auto py-10 text-center flex justify-center items-center flex-col bg-blue-700 rounded-lg">
                 <h1 class="text-white text-5xl font-extrabold">Unete a nuestra Comunidad</h1>
