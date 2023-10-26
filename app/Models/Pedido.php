@@ -20,4 +20,8 @@ class Pedido extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function producto()
+    {
+        return $this->belongsTo(Productos::class, 'productos_id');
+    }
 }

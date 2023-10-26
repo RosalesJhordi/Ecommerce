@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Productos;
+use App\Models\Pedido;
 use Illuminate\Http\Request;
 
 class OrdenController extends Controller
 {
     public function index(){
-        return view("secciones.Orden");
+        $pedidos = Pedido::where('user_id', auth()->user()->id)->get();
+        return view("secciones.Orden",compact("pedidos"));
     }
     public function store(Request $request){
         dd($request->id_producto);

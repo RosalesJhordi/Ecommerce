@@ -16,4 +16,23 @@
         </div>
     </form>
 </div>
+<div class="px-52 py-5">
+    @if (count($pedidos) > 0)
+        @foreach ($pedidos as $pedido)
+            <div class="border p-2 flex justify-between" style="width: 20%; height: 30vh;">
+                <div>
+                    <h1>{{ $pedido->producto->nombre }}</h1>
+                    <h1>{{ $pedido->producto->precio }}</h1>
+                    <h1>{{ $pedido->telefono }}</h1>
+                    <h1>{{ $pedido->direccion}}</h1>
+                    <h1>{{ $pedido->codigo }}</h1>
+                </div>
+                <div>
+                    <img src="{{ asset('ServidorProductos') . '/' . $pedido->producto->imagen }}" alt="" style="width: 200px; height: 200px;">
+                </div>
+            </div>
+            <span>Pedido {{ $pedido->created_at->diffForHumans() }}</span>
+        @endforeach
+    @endif
+</div>
 @endsection
