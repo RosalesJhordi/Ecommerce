@@ -12,23 +12,28 @@
     <link href="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone.css" rel="stylesheet" type="text/css" />
     <script src="https://kit.fontawesome.com/a22afade38.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');</style>
 </head>
 <body class="bg-white">
     <header class="shadow-md px-5 flex items-center justify-between">
         <a href="/"><img src="{{asset('img/logo.png')}}" alt="Logo Ecommerce" class="w-64"></a>
-        <nav class="w-1/3 uppercase flex justify-around items-center font-semibold text-gray-400">
+        <nav class="w-1/2 uppercase flex justify-around items-center font-semibold text-gray-400">
             <a href="/" class="hover:text-black">Inicio</a>
             <a href="{{route('Productos')}}" class="hover:text-black">Productos</a>
             <a href="{{route('Categorias')}}" class="hover:text-black">Categoria</a>
             <a href="{{route('Orden')}}" class="hover:text-black">Revisar orden</a>
+            <a href="{{route('Recomendado')}}" class="hover:text-black">Recomendado</a>
             @auth
-            <a href="{{route('Agregar')}}" class="hover:text-black">Agregar Producto</a>
+                <a href="{{route('Agregar')}}" class="hover:text-black">Agregar Producto</a>
             @endauth
         </nav>
         <div class="px-5 text-2xl w-auto flex items-center">
             @if (auth()->user())
                 <i class="fa-solid fa-magnifying-glass hover:text-gray-500"></i>
-                <i class="fa-solid fa-cart-shopping"></i>
+                <div class="relative">
+                    <span class="absolute text-xs w-3 h-3 right-0 text-white flex justify-center items-center p-1 rounded-full bg-red-600" style="top: -5%"></span>
+                    <i class="fa-solid fa-cart-shopping px-1"></i>
+                </div>
                 <button id="info"><img src="{{asset('img/usuario.svg')}}" alt="" class="w-10 h-10 rounded-full m-2 cursor-pointer" id="info"></button>
             @else
                 <i class="fa-solid fa-magnifying-glass hover:text-gray-500"></i>
@@ -47,7 +52,6 @@
                 <img src="{{asset('img/usuario.svg')}}" alt="" class="w-80 h-80 rounded-full m-2 cursor-pointer">
             </div>
             <div class="w-full flex flex-col  justify-center mt-5">
-                <button class="border w-1/2  rounded-md bg-white border-blue-500 hover:bg-blue-500 hover:text-white font-bold p-2 m-auto" id="editar-imagen">Editar Foto</button>
                 <h1 class="text-2xl font-semibold w-1/2 m-auto py-1 mt-5">{{auth()->user()->name}}</h1>
                 <h1 class="text-2xl font-semibold w-1/2 m-auto py-1">{{auth()->user()->email}}</h1>
                 <a href="{{route('LogOut')}}" class="bg-red-500 w-1/2 m-auto text-center p-2 mt-10 rounded-lg text-white">Cerrar sesion</a>

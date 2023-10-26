@@ -8,7 +8,7 @@
 <div style="width: 60%; height: 60vh;" class="m-auto shadow-2xl fixed bg-white rounded-lg formulario">
   <i class="fa-solid fa-x p-2 text-red font-bold text-2xl w-full flex justify-end text-end cancelar"></i>
   <div class="w-full h-auto flex justify-between mt-2" style="height: 50vh;">
-    <div class="w-1/2 mx-5 h-96 m-auto rounded-lg border border-black">
+    <div class="w-1/2 mx-5 h-96 m-auto rounded-lg border">
       <form action="{{ route('Imagen') }}" method="POST" enctype="multipart/form-data" id="dropzone" class="dropzone font-extralight text-gray-700 text-3xl h-full flex flex-col justify-center items-center">
         @csrf
       </form>
