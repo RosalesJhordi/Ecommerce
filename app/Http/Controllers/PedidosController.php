@@ -6,12 +6,17 @@ use App\Models\Pedido;
 use App\Models\Productos;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PedidosController extends Controller
 {
     public function index($id){
         $productos = Productos::find($id);
         return view("secciones.Pedido",compact("productos"));
+    }
+    public function ver(){
+        $pedido = Pedido::where('user_id', auth()->user()->id)->get();
+        return view("secciones.PedidosRealizados",compact("pedido"));
     }
     public function store(Request $request){
         $this->validate($request, [

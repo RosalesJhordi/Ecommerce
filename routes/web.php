@@ -37,6 +37,7 @@ Route::get('Agregar',[ProductosController::class,'agregar'])->name('Agregar'); /
 Route::get('LogOut',[LogOutController::class,'index'])->name('LogOut');
 Route::get('Recomendado',[RecomendadoController::class,'index'])->name('Recomendado');
 Route::get('Pedido/{id}',[PedidosController::class,'index'])->name('Pedido');
+Route::get('VerPedidos',[PedidosController::class,'ver'])->name('VerPedidos');
 
 //Vista Registro - formulario
 

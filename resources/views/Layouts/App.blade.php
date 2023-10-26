@@ -29,12 +29,12 @@
         <div class="px-5 text-2xl w-auto flex items-center">
             @if (auth()->user())
                 <i class="fa-solid fa-magnifying-glass hover:text-gray-500"></i>
-                    <div class="relative">
+                    <a href="{{route('VerPedidos')}}"><div class="relative">
                         @if (auth()->user()->pedidos->isNotEmpty())
                             <span class="absolute text-xs w-3 h-3 right-0 text-white flex justify-center items-center p-1 rounded-full bg-red-600" style="top: -5%"></span>
                         @endif
                         <i class="fa-solid fa-cart-shopping px-1"></i>
-                    </div>
+                    </div></a>
                     <div class="relative">
                         {{-- @if (auth()->user()->pedidos->isNotEmpty())
                             <span class="absolute text-xs w-3 h-3 right-0 text-white flex justify-center items-center p-1 rounded-full bg-sky-500" style="top: -5%"></span>
