@@ -1,18 +1,21 @@
 <?php
 
 use App\Models\User;
+use App\Models\Pedido;
 use App\Models\Productos;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OrdenController;
 use App\Http\Controllers\ImagenController;
 use App\Http\Controllers\LogOutController;
+use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\PedidosController;
 use App\Http\Controllers\RegistroController;
 use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\RecomendadoController;
-use App\Models\Pedido;
+use App\Http\Controllers\PerfilImagenController;
 
 Route::get('/', function () {
     $productos = Productos::all();
@@ -38,17 +41,17 @@ Route::get('LogOut',[LogOutController::class,'index'])->name('LogOut');
 Route::get('Recomendado',[RecomendadoController::class,'index'])->name('Recomendado');
 Route::get('Pedido/{id}',[PedidosController::class,'index'])->name('Pedido');
 Route::get('VerPedidos',[PedidosController::class,'ver'])->name('VerPedidos');
-
+Route::get('Perfil',[PerfilController::class,'index'])->name('EdiatPerfil');
+Route::get('{name}',[PerfilImagenController::class,'index'])->name('Perfiles');
 //Vista Registro - formulario
-
 Route::get('Registro',[RegistroController::class,'index'])->name('Registro'); //Vista del formulario de registro
 Route::post('Registro',[RegistroController::class,'store']);
-
 Route::get('Login',[LoginController::class,'index'])->name('Login');
 Route::post('Login',[LoginController::class,'store']);
-
+Route::post('Editar/{id}',[PostController::class,'edit'])->name('editperfil');
 Route::post('Info',[RegistroController::class,'informacion'])->name('Informacion');
 Route::post('Imagen',[ImagenController::class,'store'])->name('Imagen');
+Route::post('Perfil',[PerfilImagenController::class,'store'])->name('Perfil.img');
 Route::post('AgregarProducto',[ProductosController::class,'store'])->name('AgregarProducto');
 Route::post('Categoria',[ProductosController::class,'filtrar'])->name('Filtrar');
 Route::post('/producto/{producto}/likes',[LikeController::class,'store'])->name('likes.store');

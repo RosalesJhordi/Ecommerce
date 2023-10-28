@@ -1,5 +1,5 @@
 @extends('Layouts.App')
-
+@vite('resources/js/app.js')
 @section('titulo')
     Agregar Producto
 @endsection

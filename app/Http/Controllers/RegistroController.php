@@ -33,11 +33,11 @@ class RegistroController extends Controller
         return view('Home', ['productos' => $productos,auth()->user()]);
 
     }
-    public function perfil(Request $request){
-        User::create([
-            'imagen' => $request->imagen
-        ]);
-        $productos = Productos::all();
-        return view('Home', ['productos' => $productos,auth()->user()]);
-    }
+    // public function perfil(Request $request){
+    //     User::create([
+    //         'imagen' => $request->imagen
+    //     ]);
+    //     $productos = Productos::all();
+    //     return view('Home', ['productos' => $productos,auth()->user()]);
+    // }
 }

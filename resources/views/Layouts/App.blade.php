@@ -7,7 +7,6 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Ecommerce - @yield('titulo')</title>
     @vite('resources/css/app.css')
-    @vite('resources/js/app.js')
     <script src="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone-min.js"></script>
     <link href="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone.css" rel="stylesheet" type="text/css" />
     <script src="https://kit.fontawesome.com/a22afade38.js" crossorigin="anonymous"></script>
@@ -20,15 +19,14 @@
         <nav class="w-1/2 uppercase flex justify-around items-center font-semibold text-gray-400">
             <a href="/" class="hover:text-black">Inicio</a>
             <a href="{{route('Productos')}}" class="hover:text-black">Productos</a>
-            <a href="{{route('Orden')}}" class="hover:text-black">Revisar orden</a>
             <a href="{{route('Recomendado')}}" class="hover:text-black">Recomendado</a>
             @auth
+                <a href="{{route('Orden')}}" class="hover:text-black">Revisar orden</a>
                 <a href="{{route('Agregar')}}" class="hover:text-black">Agregar Producto</a>
             @endauth
         </nav>
-        <div class="px-5 text-2xl w-auto flex items-center">
+        <div class="px-5 gap-2 text-2xl w-auto flex items-center">
             @if (auth()->user())
-                <i class="fa-solid fa-magnifying-glass hover:text-gray-500"></i>
                     <a href="{{route('VerPedidos')}}"><div class="relative">
                         @if (auth()->user()->pedidos->isNotEmpty())
                             <span class="absolute text-xs w-3 h-3 right-0 text-white flex justify-center items-center p-1 rounded-full bg-red-600" style="top: -5%"></span>
@@ -36,14 +34,19 @@
                         <i class="fa-solid fa-cart-shopping px-1"></i>
                     </div></a>
                     <div class="relative">
-                        {{-- @if (auth()->user()->pedidos->isNotEmpty())
+                        @if (auth()->user()->productos->where('pedidos_count', '>', 0)->isNotEmpty())
                             <span class="absolute text-xs w-3 h-3 right-0 text-white flex justify-center items-center p-1 rounded-full bg-sky-500" style="top: -5%"></span>
-                        @endif --}}
+                        @endif
                         <i class="fa-solid fa-bell"></i>
                     </div>
-                <button id="info"><img src="{{asset('img/usuario.svg')}}" alt="" class="w-10 h-10 rounded-full m-2 cursor-pointer" id="info"></button>
+                <button id="info">
+                    @if (auth()->user()->imagen)
+                        <img src="{{ asset('PerfilUsuarios') . '/' . auth()->user()->imagen }}" alt="" class="rounded-full w-10 h-10" id="info">
+                    @else
+                        <img src="{{asset('img/usuario.svg')}}" alt="" class="w-10 h-10 rounded-full m-2 cursor-pointer" id="info">
+                    @endif
+                </button>
             @else
-                <i class="fa-solid fa-magnifying-glass hover:text-gray-500"></i>
                 <a href="{{route('Registro')}}"><i class="fa-solid fa-right-to-bracket"></i></a>
             @endif
         </div>
@@ -56,10 +59,19 @@
                 <i class="fa-solid fa-x p-2 text-white font-bold text-2xl" id="close"></i>
             </span>
             <div class="w-full flex justify-center">
-                <img src="{{asset('img/usuario.svg')}}" alt="" class="w-80 h-80 rounded-full m-2 cursor-pointer">
+                @if (auth()->user()->imagen)
+                    <img src="{{ asset('PerfilUsuarios') . '/' . auth()->user()->imagen }}" alt="" class="rounded-full w-80 h-80">
+                @else
+                    <img src="{{asset('img/usuario.svg')}}" alt="" class="w-80 h-80 rounded-full m-2 cursor-pointer">
+                @endif
             </div>
             <div class="w-full flex flex-col  justify-center mt-5">
-                <h1 class="text-2xl font-semibold w-1/2 m-auto py-1 mt-5">{{auth()->user()->name}}</h1>
+                <h1 class="text-2xl font-semibold w-1/2 m-auto py-1 mt-5 relative">
+                    {{auth()->user()->name}}
+                    <a href="{{ route('EdiatPerfil') }}">
+                        <i class="fa-solid fa-pencil absolute bottom-0 right-0 text-3xl p-2 cursor-pointer"></i>
+                    </a>
+                </h1>
                 <h1 class="text-2xl font-semibold w-1/2 m-auto py-1">{{auth()->user()->email}}</h1>
                 <a href="{{route('LogOut')}}" class="bg-red-500 w-1/2 m-auto text-center p-2 mt-10 rounded-lg text-white">Cerrar sesion</a>
             </div>

@@ -21,7 +21,8 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'password'
+        'password',
+        'imagen'
     ];
 
     /**
@@ -51,7 +52,7 @@ class User extends Authenticatable
         return $this->belongsToMany(Productos::class, 'likes', 'user_id', 'productos_id')->withTimestamps();
     }
     public function pedidos()
-{
-    return $this->hasMany(Pedido::class);
-}
+    {
+        return $this->hasMany(Pedido::class);
+    }
 }
