@@ -1,5 +1,6 @@
 @extends('Layouts.App')
 @vite('resources/js/app.js')
+
 @section('titulo')
     Agregar Producto
 @endsection
@@ -91,18 +92,33 @@
   <h1 class=" py-10 uppercase text-2xl font-extrabold font-mono text-blue-900">Productos añadidos por {{auth()->user()->name}}</h1>
   <button class="bg-green-500 p-2 text-white w-28 rounded-md cursor-pointer añadir">AÑADIR</button>
 </div>
+@if(session('success'))
+  <div class="w-full flex justify-center items-center">
+    <p class="bg-red-500 px-52 text-white my-2 rounded-sm text-md p-2 text-center" style="width: 50%;">{{ session('success') }}</p>
+  </div>
+@endif
 @if (count($productos) > 0)
     <div class="flex justify-between flex-wrap px-52" style="height: 60vh">
-    @foreach ($productos as $producto)
-    <div class="shadow-md shadow-black rounded-lg p-2 flex justify-between h-1/3" style="width: 30%;">
-        <div class="flex flex-col  justify-start px-5  items-start w-96">
-            <span class="text-2xl font-bold">{{$producto->nombre}}</span>
-            <span class="text-xl font-semibold w-full">{{$producto->categoria}}</span>
-            <span class="font-mono text-blue-900 uppercase font-extrabold py-5">{{ $producto->created_at->diffForHumans() }}</span>
+      @foreach ($productos as $producto)
+      <div class="rounded-sm border p-2 h-60" style="width: 30%;">
+        <div class="p-2 flex justify-between">
+          <div class="flex flex-col  justify-start px-5  items-start w-96">
+              <span class="text-2xl font-bold">{{$producto->nombre}}</span>
+              <span class="text-xl font-semibold w-full">{{$producto->categoria}}</span>
+              <span class="font-mono text-blue-900 uppercase font-extrabold py-5">{{ $producto->created_at->diffForHumans() }}</span>
+          </div>
+          <img src="{{asset('ServidorProductos') . '/' . $producto->imagen}}" alt="Imagen Producto {{$producto->nombre}}" class="w-44">
         </div>
-        <img src="{{asset('ServidorProductos') . '/' . $producto->imagen}}" alt="Imagen Producto {{$producto->nombre}}" class="w-44">
-    </div>
-    @endforeach
+          <div class="flex justify-end items-center gap-2">
+            <a href="{{ route('DeleteProduct',$producto->id) }}">
+              <i class="fa-solid fa-trash p-2 rounded-full bg-red-500 text-white text-xl flex justify-center items-center"></i>
+            </a>
+            <a href="{{route('EditarProducto',$producto->id)}}">
+                <i class="fa-solid fa-pencil p-2 rounded-full bg-blue-500 text-white text-xl flex justify-center items-center"></i>
+            </a>
+          </div>
+      </div>
+      @endforeach
     </div>
     <div class="px-52 py-10">
         {{ $productos->links() }}

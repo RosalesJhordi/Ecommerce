@@ -34,10 +34,19 @@
                         <i class="fa-solid fa-cart-shopping px-1"></i>
                     </div></a>
                     <div class="relative">
-                        @if (auth()->user()->productos->where('pedidos_count', '>', 0)->isNotEmpty())
-                            <span class="absolute text-xs w-3 h-3 right-0 text-white flex justify-center items-center p-1 rounded-full bg-sky-500" style="top: -5%"></span>
-                        @endif
-                        <i class="fa-solid fa-bell"></i>
+                            @if (auth()->user()->productos->isNotEmpty())
+                                {{-- <ul>
+                                    @foreach (auth()->user()->productos as $producto)
+                                        @if ($producto->pedidos->isNotEmpty())
+                                            <li>{{ $producto->nombre }} tiene pedidos.</li>
+                                        @endif
+                                    @endforeach
+                                </ul> --}}
+                                <span class="absolute text-xs w-3 h-3 right-0 text-white flex justify-center items-center p-1 rounded-full bg-sky-500" style="top: -5%"></span>
+                                <i class="fa-solid fa-bell"></i>
+                            @else
+                                <i class="fa-solid fa-bell"></i>
+                            @endif
                     </div>
                 <button id="info">
                     @if (auth()->user()->imagen)

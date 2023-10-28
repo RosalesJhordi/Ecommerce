@@ -9,8 +9,9 @@ use Intervention\Image\Facades\Image;
 
 class PerfilImagenController extends Controller
 {
-    public function index($name){
-        
+    public function index($id){
+        $user = User::find($id);
+        return view("secciones.Perfiles", compact("user"));
     }
     public function store(Request $request){
         $perfil = $request->file('file');
