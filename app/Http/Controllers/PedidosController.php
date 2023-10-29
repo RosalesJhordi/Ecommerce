@@ -34,4 +34,16 @@ class PedidosController extends Controller
 
         return back()->with('success','Pedido Realizado');
     }
+    public function show(){
+        $Productos = Productos::where('user_id', auth()->user()->id)->get();
+        $Pedidos = Pedido::whereIn('productos_id', $Productos->pluck('id'))->paginate(12);
+
+        return view('secciones.PedidosObtenidos', compact('Pedidos'));
+    }
+    public function cancel($id){
+        $pedido = Pedido::find($id);
+        $pedido->delete();
+
+        return back();
+    }
 }

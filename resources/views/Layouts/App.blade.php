@@ -7,6 +7,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Ecommerce - @yield('titulo')</title>
     @vite('resources/css/app.css')
+    @vite('resources/css/media.css')
+    @vite('resources/js/menu.js')
     <script src="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone-min.js"></script>
     <link href="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone.css" rel="stylesheet" type="text/css" />
     <script src="https://kit.fontawesome.com/a22afade38.js" crossorigin="anonymous"></script>
@@ -14,39 +16,48 @@
     <style>@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');</style>
 </head>
 <body class="bg-white">
-    <header class="shadow-md px-5 flex items-center justify-between">
-        <a href="/"><img src="{{asset('img/logo.png')}}" alt="Logo Ecommerce" class="w-64"></a>
-        <nav class="w-1/2 uppercase flex justify-around items-center font-semibold text-gray-400">
+    <div class="w-full bg-white h-full fixed z-50 hidden" id="menu-ops" style="height: 100vh;">
+        <i class="fa-solid fa-x p-2 text-2xl absolute top-0 left-0" id="cerrar-menu-ops"></i>
+        <nav class="w-full gap-10 uppercase flex justify-around items-center font-semibold text-black flex-col">
             <a href="/" class="hover:text-black">Inicio</a>
             <a href="{{route('Productos')}}" class="hover:text-black">Productos</a>
             <a href="{{route('Recomendado')}}" class="hover:text-black">Recomendado</a>
             @auth
-                <a href="{{route('Orden')}}" class="hover:text-black">Revisar orden</a>
                 <a href="{{route('Agregar')}}" class="hover:text-black">Agregar Producto</a>
             @endauth
         </nav>
-        <div class="px-5 gap-2 text-2xl w-auto flex items-center">
+    </div>
+    <header class="shadow-md px-5 flex items-center justify-between header">
+        <a href="/"><img src="{{asset('img/logo.png')}}" alt="Logo Ecommerce" class="w-64 logo"></a>
+        <nav class="w-1/3 uppercase flex justify-around items-center font-semibold text-gray-400 nav">
+            <a href="/" class="hover:text-black">Inicio</a>
+            <a href="{{route('Productos')}}" class="hover:text-black">Productos</a>
+            <a href="{{route('Recomendado')}}" class="hover:text-black">Recomendado</a>
+            @auth
+                <a href="{{route('Agregar')}}" class="hover:text-black">Agregar Producto</a>
+            @endauth
+        </nav>
+        <div class="px-5 gap-2 text-2xl w-auto flex items-center ops">
             @if (auth()->user())
                     <a href="{{route('VerPedidos')}}"><div class="relative">
                         @if (auth()->user()->pedidos->isNotEmpty())
-                            <span class="absolute text-xs w-3 h-3 right-0 text-white flex justify-center items-center p-1 rounded-full bg-red-600" style="top: -5%"></span>
+                            <span class="absolute text-xs w-3 h-3 right-0 text-white flex justify-center items-center p-1 rounded-full bg-red-600 punto"></span>
                         @endif
                         <i class="fa-solid fa-cart-shopping px-1"></i>
                     </div></a>
                     <div class="relative">
-                            @if (auth()->user()->productos->isNotEmpty())
-                                {{-- <ul>
-                                    @foreach (auth()->user()->productos as $producto)
-                                        @if ($producto->pedidos->isNotEmpty())
-                                            <li>{{ $producto->nombre }} tiene pedidos.</li>
-                                        @endif
-                                    @endforeach
-                                </ul> --}}
-                                <span class="absolute text-xs w-3 h-3 right-0 text-white flex justify-center items-center p-1 rounded-full bg-sky-500" style="top: -5%"></span>
+                        @if (auth()->user()->productos->isEmpty())
+                            <a href="{{route('PedidosObtenios')}}">
                                 <i class="fa-solid fa-bell"></i>
-                            @else
-                                <i class="fa-solid fa-bell"></i>
+                            </a>
+                        @else
+                            @if (auth()->user()->productos->pluck('pedidos')->flatten()->isNotEmpty())
+                                <span class="absolute text-xs w-3 h-3 right-0 text-white flex justify-center items-center p-1 rounded-full bg-sky-500 punto"></span>
                             @endif
+                                <a href="{{route('PedidosObtenios')}}">
+                                    <i class="fa-solid fa-bell"></i>
+                                </a>
+                        @endif
                     </div>
                 <button id="info">
                     @if (auth()->user()->imagen)
@@ -55,12 +66,15 @@
                         <img src="{{asset('img/usuario.svg')}}" alt="" class="w-10 h-10 rounded-full m-2 cursor-pointer" id="info">
                     @endif
                 </button>
+                <div class="hidden menu">
+                    <i class="fa-solid fa-bars" id="abrir-menu-ops"></i>
+                </div>
             @else
                 <a href="{{route('Registro')}}"><i class="fa-solid fa-right-to-bracket"></i></a>
             @endif
         </div>
     </header>
-    <main class="w-full h-full py-30">
+    <main class="w-full h-full py-30 relative">
         @yield('contenido')
         @auth
         <div class="w-1/4 bg-gray-100 shadow-2xl top-0 right-0 fixed" style="height: 100vh" id="Informacion">
@@ -87,21 +101,21 @@
         </div>
         @endauth
     </main>
-    <footer class="w-full flex justify-center items-center flex-col border-y-2 bg-gray-200">
-        <div class="flex justify-center w-1/2 mt-10">
-            <div class="w-1/3 text-start">
+    <footer class="w-full flex justify-center items-center flex-col border-y-2 bg-gray-200 footer">
+        <div class="flex justify-center w-1/2 mt-10 div">
+            <div class="w-1/3 text-start divs">
                 <span class="font-bold text-2xl">Compania</span>
                 <p class="font-semibold mt-2">Sobre Nosotros</p>
                 <p class="font-semibold mt-2">Productos</p>
                 <p class="font-semibold mt-2">Direccion</p>
             </div>
-            <div class="w-1/3 text-start">
+            <div class="w-1/3 text-start divs">
                 <span class="font-bold text-2xl">Apoyo</span>
                 <p class="font-semibold mt-2">Preguntas frecuentes</p>
                 <p class="font-semibold mt-2">Envio y devolucion</p>
                 <p class="font-semibold mt-2">Garantia</p>
             </div>
-            <div class="w-1/3 text-start">
+            <div class="w-1/3 text-start divs">
                 <span class="font-bold text-2xl">Contactenos</span>
                 <p class="font-semibold mt-2"><i class="fa-solid fa-phone"></i> +51 916 236 760</p>
                 <p class="font-semibold mt-2"><i class="fa-solid fa-envelope"></i> Ecommerce@eco.com</p>

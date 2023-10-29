@@ -100,23 +100,25 @@
 @if (count($productos) > 0)
     <div class="flex justify-between flex-wrap px-52" style="height: 60vh">
       @foreach ($productos as $producto)
-      <div class="rounded-sm border p-2 h-60" style="width: 30%;">
-        <div class="p-2 flex justify-between">
+      <div class="rounded-sm border h-52" style="width: 30%;">
+        <div class="p-2 flex justify-between relative">
+          <div class="flex justify-end items-center absolute p-2 right-0 bottom-0 gap-2">
+                <a href="{{ route('DeleteProduct',$producto->id) }}">
+                  <i class="fa-solid fa-trash p-2 rounded-full bg-red-500 text-white text-xl flex justify-center items-center"></i>
+                </a>
+                <a href="{{route('EditarProducto',$producto->id)}}">
+                    <i class="fa-solid fa-pencil p-2 rounded-full bg-blue-500 text-white text-xl flex justify-center items-center"></i>
+                </a>
+          </div>
           <div class="flex flex-col  justify-start px-5  items-start w-96">
               <span class="text-2xl font-bold">{{$producto->nombre}}</span>
               <span class="text-xl font-semibold w-full">{{$producto->categoria}}</span>
+              <span class="text-xl font-semibold w-full">{{$producto->precio}}</span>
+              <span class="text-xl font-semibold w-full">{{$producto->descuento}}</span>
               <span class="font-mono text-blue-900 uppercase font-extrabold py-5">{{ $producto->created_at->diffForHumans() }}</span>
           </div>
           <img src="{{asset('ServidorProductos') . '/' . $producto->imagen}}" alt="Imagen Producto {{$producto->nombre}}" class="w-44">
         </div>
-          <div class="flex justify-end items-center gap-2">
-            <a href="{{ route('DeleteProduct',$producto->id) }}">
-              <i class="fa-solid fa-trash p-2 rounded-full bg-red-500 text-white text-xl flex justify-center items-center"></i>
-            </a>
-            <a href="{{route('EditarProducto',$producto->id)}}">
-                <i class="fa-solid fa-pencil p-2 rounded-full bg-blue-500 text-white text-xl flex justify-center items-center"></i>
-            </a>
-          </div>
       </div>
       @endforeach
     </div>

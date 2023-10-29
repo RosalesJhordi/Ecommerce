@@ -8,11 +8,10 @@ export default {
   ],
   theme: {
     screens: {
-      sm: '450px',
-      md: '768px',
-      lg: '976px',
-      xl: '1440px'
-    }
+      'sm': '450px',
+      'md': '768px',
+      'lg': '1440px',
+    },
   },
   plugins: [],
 }

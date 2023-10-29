@@ -14,7 +14,7 @@ use App\Http\Controllers\RegistroController;
 use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\RecomendadoController;
 use App\Http\Controllers\PerfilImagenController;
-
+Route::get('Pedidos',[PedidosController::class,'show'])->name('PedidosObtenios');
 //Vista Registro - formulario
 Route::get('Registro',[RegistroController::class,'index'])->name('Registro'); //Vista del formulario de registro
 Route::post('Registro',[RegistroController::class,'store']);
@@ -26,7 +26,6 @@ Route::get('/',[HomeController::class,'index'])->name('Home');
 //motrar vistas - views
 
 Route::get('Productos',[ProductosController::class,'index'])->name('Productos'); //vista productos
-Route::get('Orden',[OrdenController::class,'index'])->name('Orden'); //vista Ordenes
 Route::get('Agregar',[ProductosController::class,'agregar'])->name('Agregar'); //vista agregar productos
 Route::get('LogOut',[LogOutController::class,'index'])->name('LogOut'); //Cerar sesion
 Route::get('Recomendado',[RecomendadoController::class,'index'])->name('Recomendado'); // vista recomendados
@@ -45,3 +44,4 @@ Route::post('/producto/{producto}/likes',[LikeController::class,'store'])->name(
 Route::post('Pedido',[PedidosController::class,'store'])->name('Pedido.store');
 Route::post('EditarProducto/{id}',[ProductosController::class,'update'])->name('UpdateProduct');
 Route::get('Delete/{id}',[ProductosController::class,'delete'])->name('DeleteProduct');
+Route::get('Cancelar/{id}',[PedidosController::class,'cancel'])->name('Cancelar');

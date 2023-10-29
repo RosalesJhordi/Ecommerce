@@ -1,0 +1,149 @@
+@media (max-width: 450px){
+    .header{
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    .logo{
+        width: 150px;
+    }
+    .nav{
+        display: none;
+    }
+    #menu-ops{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .ops{
+        font-size: 15px;
+    }
+    .ops .punto{
+        width: 5px;
+        height: 5px;
+        top: 0%;
+    }
+    .ops img{
+        width: 25px;
+        height: 25px;
+    }
+    .menu{
+        display: block;
+    }
+    #Informacion{
+        width: 100%;
+    }
+    .footer{
+        width: 100%;
+        color: rgb(48, 47, 47);
+    }
+    .footer .div{
+        width: 100%;
+        gap: 10px;
+    }
+    .divs{
+        width: 50%;
+    }
+    .divs span{
+        font-size: 15px;
+    }
+    .divs p{
+        font-size: 10px;
+    }
+    .footer p{
+        font-size: 16px;
+    }
+    .bienvenido{
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-top: 5px;
+        font-size: 15px;
+    }
+    .estos{
+        padding-left: 10px;
+        padding-right: 10px;
+        font-size: 15px;
+    }
+    .contenedor-productos{
+        padding: 0%;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .producto-div{
+        width: 45%;
+        height: 30vh;
+    }
+    #contenedor-img{
+        height: 70%;
+    }
+    #contenedor-img span{
+        font-size: 20px;
+        width: 50px;
+    }
+    #contenedor-img .perfil img{
+        width: 30px;
+        height: 30px;
+    }
+    .producto-info{
+        height: 30%;
+    }
+    .div .nm{
+        font-size: 15px;
+    }
+    .div .cate{
+        font-size: 10px;
+    }
+    .div .price{
+        font-size: 10px;
+        padding: 1px;
+    }
+    .div .desc{
+        font-size: 12px;
+        padding: 1px;
+    }
+    .div form{
+        margin-top: 5px;
+    }
+    .div form button{
+        margin-left: 0px;
+    }
+    .div form p{
+        font-size: 10px;
+    }
+    .div .ops-producto{
+        font-size: 15px;
+        width: 25px;
+        height: 25px;
+        padding: 2px;
+    }
+    .catego{
+        padding: 0%;
+        padding-left: 10px;
+        padding-right: 10px;
+        font-size: 12px;
+        margin-top: 2px;
+    }
+    .cat{
+        padding: 1.5%;
+        padding-left: 15px;
+        padding-right: 10px;
+        font-size: 10px;
+    }
+    .h1-productos{
+        padding: 0%;
+        font-size: 15px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .conte-reco{
+        padding: 0%;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .conte-reco h1{
+        padding: 0%;
+        margin-top: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
+        font-size: 15px;
+    }
+}
