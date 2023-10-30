@@ -74,7 +74,7 @@
             @endif
         </div>
     </header>
-    <main class="w-full h-full py-30 relative">
+    <main class="w-full h-full relative">
         @yield('contenido')
         @auth
         <div class="w-1/4 bg-gray-100 shadow-2xl top-0 right-0 fixed" style="height: 100vh" id="Informacion">

@@ -8,5 +8,5 @@ open.addEventListener("click", function() {
 });
 
 close.addEventListener("click", function() {
-  div.style.transform = 'translateX(500px)';
+  div.style.transform = 'translateX(900px)';
 }); 

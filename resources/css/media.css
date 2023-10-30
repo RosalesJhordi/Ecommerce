@@ -1,4 +1,4 @@
-@media (max-width: 450px){
+@media (max-width: 676px){
     .header{
         padding-left: 0px;
         padding-right: 0px;
@@ -146,4 +146,135 @@
         padding-right: 10px;
         font-size: 15px;
     }
+    .div-tt{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .div-tt h1{
+        padding-top: 15px;
+        padding-bottom: 10px;
+        font-size: 15px;
+    }
+    .div-tt button{
+        font-size: 10px;
+        padding: 5px;
+        width: 100px;
+        border-radius: 2px;
+    }
+    .productos-an{
+        padding-right: 10px;
+        padding-left: 10px;
+        width: 100%;
+        height: auto;
+    }
+    .conte-productos{
+        width: 100%;
+    }
+    .div-info-an{
+        width: 60%;
+        height: 100%;
+    }
+    .div-info-an span{
+        font-size: 12px;
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+    .div-info-an{
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+    .conte-p-an{
+        padding-right: 0px;
+        padding-left: 0px;
+        height: 100%;
+        width: 100%;
+    }
+    .conte-p-an img{
+        padding-right: 0px;
+        padding-left: 0px;
+        width: 40%;
+    }
+    .succes p{
+        text-align: center;
+        width: 100%;
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+    .pr-o{
+        padding-right: 10px;
+        padding-left: 10px;
+        text-align: center;
+        
+    }
+    .pr-o h1{
+        font-size: 15px;
+    }
+    .pr-o img{
+        width: 50%;
+    }
+    .div-rp{
+        width: 100%;
+        margin-top: 10px;
+    }
+    .div-rp h1{
+        width: 100%;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 0px;
+        padding-bottom: 10px;
+        font-size: 15px;
+    }
+    .div-rp .div-cn{
+        width: 80% !important;
+        height: 70vh !important;
+        flex-direction: column;
+        margin-top: 10px;
+    }
+    .div-cn .div-1{
+        width: 100%;
+        height: 25vh;
+        padding: 0%;
+        margin-top: 1pc;
+    }
+    .div-cn .div-2{
+        width: 100%;
+    }
+    .div-2 form{
+        margin-top: 5px;
+        height: 20vh;
+    }
+    .div-2 form button{
+        padding: 5px;
+    }
+    .h1-pedido{
+        padding-left: 10px !important;
+        font-size: 20px !important;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .divpedidos{
+        width: 100% !important;
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+        justify-content: center;
+        gap: 1px !important;
+        height: 100%;
+        padding-bottom: 20px;
+        display: block !important;
+    }
+    .divpedido{
+        width: 90% !important;
+        margin: auto;
+        margin-top: 15px;
+    }
+    .divpedido a{
+        border-radius: 2px;
+        width: 90%;
+    }
+}
+.productos-an{
+    height: 60vh;
+}
+.pr-o{
+    height: 60vh;
 }

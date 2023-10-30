@@ -7,14 +7,14 @@
 }
 
 #Informacion{
-    transform: translateX(500px);
+    transform: translateX(900px);
     transition: transform 0.5s ease-in-out;
 }
 #menu-ops{
-    transform: translateX(500px);
+    transform: translateX(900px);
     transition: transform 0.5s ease-in-out;
 }
-.formulario{
+#formulario{
     left: 20%;
     top: 20%;
     transform: translateY(-1000px);
@@ -31,14 +31,28 @@
 .form{
     width: 60%;
 }
-@media (max-width: 450px) {
-    .contenedor-img{
-        width: 0px;
+
+@media (max-width: 676px) {
+    #formulario {
+        width: 95% !important;
+        height: 80vh !important;
+        left: 2.5%;
+        top: 10%;
     }
-    .contenedor-form{
+    .formulario-conte{
+        flex-direction: column;
+    }
+    .formulario-conte .div-1{
+        width: 90%;
+        height: 25vh;
+    }
+    .formulario-conte .div-2{
         width: 100%;
+        height: 25vh;
+        margin-top: 10px;
+        height: 100%;
     }
-    .form{
-        width: 80%;
+    .div-2 form input,textarea,select{
+        background: transparent;
     }
 }

@@ -1,6 +1,6 @@
 const anadir = document.querySelector(".añadir");
 const cerrar = document.querySelector(".cancelar");
-const form = document.querySelector(".formulario");
+const form = document.getElementById("formulario");
 const body = document.body;
 const foot = document.querySelector("footer");
 

@@ -11,7 +11,7 @@ open.addEventListener("click", function() {
 });
 
 close.addEventListener("click", function() {
-  div.style.transform = 'translateX(500px)';
+  div.style.transform = 'translateX(900px)';
   body.style.backgroundColor = 'white';
   foot.style.backgroundColor = 'rgb(229 231 235)';
 }); 
