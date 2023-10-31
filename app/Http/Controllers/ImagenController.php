@@ -13,6 +13,7 @@ class ImagenController extends Controller
 
         $nomImage = Str::uuid() . "." . $imagen->extension();
         $imgServe = Image::make($imagen);
+        $imgServe->fit(1000,1000);
 
         $imgPath = public_path('ServidorProductos') . '/' . $nomImage;
         $imgServe->save($imgPath);

@@ -8,6 +8,7 @@
     <title>Ecommerce - @yield('titulo')</title>
     @vite('resources/css/app.css')
     @vite('resources/css/media.css')
+    @vite('resources/css/perfiles.css')
     @vite('resources/js/menu.js')
     <script src="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone-min.js"></script>
     <link href="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone.css" rel="stylesheet" type="text/css" />

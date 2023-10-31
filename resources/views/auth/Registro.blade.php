@@ -7,6 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Registro - Ecommerce</title>
     @vite('resources/css/app.css')
+    @vite('resources/css/mediaLogin.css')
     <script src="https://kit.fontawesome.com/a22afade38.js" crossorigin="anonymous"></script>
 </head>
 <body class="w-full m-0 flex justify-between items-center">
@@ -55,7 +56,7 @@
             </div>
             <button type="submit" class="p-2 mt-10 rounded-md text-white font-semibold m-auto text-center w-full bg-blue-500">Crear Cuenta</button>
         </form>
-        <p class="text-center mt-5 text-gray-500 text-xl">¿ Ya tienes una cuenta ? <a href="{{ route('Login') }}" class="text-blue-500 font-semibold">Iniciar sesion</a></p>
+        <p class="text-center p mt-5 text-gray-500 text-xl">¿ Ya tienes una cuenta ? <a href="{{ route('Login') }}" class="text-blue-500 font-semibold">Iniciar sesion</a></p>
     </div>
     <img src="{{asset('img/register.jpg')}}" alt="Logo Ecommerce" class="contenedor-img">
     <script src="{{asset('js/pwds.js')}}"></script>

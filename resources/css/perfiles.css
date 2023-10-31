@@ -1,0 +1,45 @@
+@media (max-width: 676px) {
+    .contenedor-perfiles{
+        width: 100% !important;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    .div-pe-1{
+        width: 90% !important;
+        height: 25vh;
+    }
+    .div-pe-1 .div-1 h1{
+        font-size: 15px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .perfil-img{
+        width: 200px;
+        height: 200px;
+    }
+    .div-pe-2 h1{
+        font-size: 15px;
+        margin-left: 10px;
+    }
+    /* editar producto */
+    .contenedor-edit{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .contenedor-edit .div-edit{
+        width: 90%;
+    }
+    .div-edit-1{
+        flex-direction: column;
+    }
+    .div-edit-1 .div-edit-img{
+        width: 100%;
+        height: 25vh;
+        justify-content: center;
+    }
+    .div-edit-img img{
+        width: 250px;
+    }
+    .div-edit-1 .div-edit-form{
+        width: 100%;
+    }
+}

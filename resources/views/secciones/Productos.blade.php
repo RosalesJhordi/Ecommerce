@@ -61,11 +61,11 @@
                         </form>
                         @if (auth()->check())
                             @if ( $producto->user->id == auth()->user()->id)
-                                <a href="{{route('EditarProducto',$producto->id)}}" class="ops-producto text-xl text-gray-800 hover:text-white w-10 h-10 flex items-center rounded-full absolute right-0 bottom-0 p-2">
+                                <a href="{{route('EditarProducto',$producto->id)}}" class="ops-producto text-xl text-gray-800 w-10 h-10 flex items-center rounded-full absolute right-0 bottom-0 p-2">
                                     <i class="fa-solid fa-pen"></i>
                                 </a>
                             @else
-                                <a href="{{route('Pedido',$producto->id)}}" class="ops-producto text-xl text-gray-800 hover:text-white w-10 h-10 flex items-center rounded-full absolute right-0 bottom-0 p-2">
+                                <a href="{{route('Pedido',$producto->id)}}" class="ops-producto text-xl text-gray-800 w-10 h-10 flex items-center rounded-full absolute right-0 bottom-0 p-2">
                                     <i class="fa-solid fa-truck-fast"></i>
                                 </a>
                             @endif

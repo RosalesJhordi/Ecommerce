@@ -6,16 +6,16 @@
 @endsection
 
 @section('contenido')
-    <div class="w-full h-screen px-80 flex justify-center items-center">
-        <div class="w-1/2 flex flex-col border">
+    <div class="w-full h-screen px-80 flex justify-center items-center contenedor-edit">
+        <div class="w-1/2 flex flex-col border div-edit">
             @if(session('success'))
                 <p class="bg-green-500 text-white my-2 rounded-sm text-md p-2 text-center" style="width: 100%;">{{ session('success') }}</p>
             @endif
-            <div class="flex gap-5 ">
-                <div class="w-1/2 flex items-center bg-blue-100 justify-end">
-                    <img src="{{ asset('ServidorProductos') . '/' . $producto->imagen }}"alt="Imagen Producto {{ $producto->nombre }}" class="w-full h-96"/>
+            <div class="flex gap-5 div-edit-1">
+                <div class="w-1/2 flex items-center bg-blue-100 justify-end div-edit-img">
+                    <img src="{{ asset('ServidorProductos') . '/' . $producto->imagen }}"alt="Imagen Producto {{ $producto->nombre }}" class="w-full "/>
                 </div>
-                <div class="w-1/2 h-full flex items-center justify-start">
+                <div class="w-1/2 h-full flex items-center justify-start div-edit-form">
                     <form action="{{ route('UpdateProduct',$producto->id)}}" method="POST" class="flex flex-col gap-2 w-full p-5">
                         @csrf
                         <label for="nombre" class="text-xl">Nombre</label>

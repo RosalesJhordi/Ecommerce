@@ -1,0 +1,20 @@
+@media (max-width: 676px) {
+    .contenedor-form{
+        width: 100%;
+    }
+    .contenedor-form img{
+        width: 50%;
+    }
+    .contenedor-form form{
+        width: 90%;
+    }
+    .contenedor-img{
+        width: 0px;
+    }
+    .contenedor-form .p{
+        font-size: 15px;
+    }
+}
+.contenedor-form form input{
+    background: transparent;
+}
