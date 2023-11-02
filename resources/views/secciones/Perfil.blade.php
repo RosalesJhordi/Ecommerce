@@ -6,13 +6,14 @@
 @endsection
 
 @section('contenido')
-    <div class="w-full px-80 flex justify-center items-center" style="height: 70vh;">
+    <div class="flex relative flex-col justify-center items-center">
         @if(session('success'))
-            <p class="bg-green-500 text-white my-2 rounded-sm text-md p-2 text-center" style="width: 50%;">{{ session('success') }}</p>
+            <p class=" absolute top-24 bg-green-500 text-white my-2 rounded-sm text-md p-2 text-center" style="width: 30%;">{{ session('success') }}</p>
         @endif
+        <div class="w-full px-80 flex justify-center items-center" style="height: 70vh;">
         <div class="h-1/2 w-1/2 flex gap-5 border">
-            <div class="w-1/2 h-full flex items-center justify-end">
-                <form action="{{ route('Perfil.img') }}" method="POST" enctype="multipart/form-data" class="flex justify-center items-center dropzone w-full h-full p-5 border shadow-md">
+            <div class="w-1/2 h-full flex items-center justify-center">
+                <form action="{{ route('Perfil.img') }}" method="POST" enctype="multipart/form-data" class="flex justify-center items-center dropzone w-full border mt-5" style="height: 100%">
                     @csrf
                 </form>
             </div>
@@ -25,6 +26,7 @@
                     <button type="submit" class="bg-blue-500 p-2 rounded-sm text-white">Guardar Cambios</button>
                 </form>
             </div>
+        </div>
         </div>
     </div>
 @endsection

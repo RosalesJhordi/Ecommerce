@@ -4,7 +4,7 @@ Dropzone.autoDiscover = false;
 
 const dropzone = new Dropzone("#dropzone", {
     dictDefaultMessage: "Imagen del producto aqui",
-    acceptedFiles: ".png,.jpg,.jpeg,.gif",
+    acceptedFiles: ".png,.jpg,.jpeg,.gif,.bmp,.tiff,.WebP",
     addRemoveLinks: true,
     dictRemoveFile: "Borrar archivo",
     maxFiles: 1,

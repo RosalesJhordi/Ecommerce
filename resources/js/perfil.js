@@ -4,7 +4,7 @@ Dropzone.autoDiscover = false;
 
 const dropzone = new Dropzone(".dropzone", {
     dictDefaultMessage: "Perfil aqui",
-    acceptedFiles: ".png,.jpg,.jpeg,.gif,.avif",
+    acceptedFiles: ".png,.jpg,.jpeg,.gif,.bmp,.tiff,.WebP,.AVIF",
     addRemoveLinks: true,
     dictRemoveFile: "Borrar archivo",
     maxFiles: 1,
